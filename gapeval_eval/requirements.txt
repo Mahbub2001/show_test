@@ -1,0 +1,37 @@
+# GapEval evaluation harness for Show-o2
+#
+# *** Install torch/torchvision FIRST, separately, from the CUDA index -- see README.md. ***
+# `pip install -r requirements.txt` alone gives you the CPU-only torch build (PyPI's default
+# index does not serve CUDA wheels). Do this first:
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+# then `pip install -r requirements.txt` will see the exact pins already satisfied and leave
+# them alone. Verify with: python -c "import torch; print(torch.cuda.is_available())"
+#
+# Versions below are pinned to match ../build_env.sh where the package overlaps with it.
+# This is NOT optional: models/qwen2.py, models/wan21_vae.py etc. are show-o2's own
+# hand-modified copies of upstream code, frozen to a specific transformers/diffusers API
+# snapshot. Installing a newer "latest" transformers WILL break (e.g. Qwen2Config losing
+# rope_theta after HF's RoPE-config refactor) -- pin, don't float, on anything show-o2 imports.
+torch==2.5.1
+torchvision==0.20.1
+transformers==4.47.0
+diffusers==0.31.0
+einops==0.8.0
+accelerate==0.23.0
+timm==1.0.12
+huggingface_hub==0.24.0
+decord
+torchdiffeq
+omegaconf
+safetensors
+sentencepiece
+protobuf
+
+# gapeval_eval's own scripts (no show-o2 version constraint)
+pillow
+openai>=1.40
+google-genai>=0.3
+python-dotenv>=1.0
+numpy
+tqdm
+pyyaml

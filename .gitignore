@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+.venv/
+
+# Secrets
+.env
+
+# Model weights / large downloads
+*.pth
+*.bin
+*.safetensors
+hf_cache/
+
+# GapEval eval harness: dataset download + generated artifacts (large, regenerable)
+gapeval_eval/data/
+gapeval_eval/outputs/
+gapeval_eval/__pycache__/
+
+# Python
+__pycache__/
+*.pyc
